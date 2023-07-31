@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Review Sentinel</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top"
+      id="sideNav"
+    >
+      <a class="navbar-brand js-scroll-trigger" href="index.html">
+        <span class="d-block">Review Sentinel</span>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="analytics.html"
+              >Analytics</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger active" href="approach.html"
+              >Approach</a
+            >
+            <div class="nav-link-sublinks">
+              <a class="nav-link js-scroll-trigger" href="#source"
+                >Data Source</a
+              >
+              <a class="nav-link js-scroll-trigger" href="#preprocessing"
+                >Data Preprocessing</a
+              >
+
+              <div class="nav-link-sublinks">
+                <a class="nav-link js-scroll-trigger" href="#cleaning"
+                  >Data Cleaning</a
+                >
+                <a class="nav-link js-scroll-trigger" href="#labeling"
+                  >Data Labeling</a
+                >
+                <a class="nav-link js-scroll-trigger" href="#processing"
+                  >Text Processing</a
+                >
+              </div>
+              <a class="nav-link js-scroll-trigger" href="#modeling"
+              >Modeling</a
+              >
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="result.html">Result</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="team.html">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="contact.html"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Page Content-->
+    <div class="container-fluid p-0">
+      <!-- home-->
+      <section class="resume-section" id="home">
+        <div class="resume-section-content">
+          <section class="container py-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 id="source">Data Source</h2>
+                <p>
+                  Our journey starts with data collection on Amazon Review Data.
+                  The dataset we use encompasses both product reviews and
+                  metadata from Amazon in the range May 1996 - Oct 2018. The
+                  reviews data contains review information such as ratings,
+                  text, helpfulness votes and the metadata provides the product
+                  information such as descriptions, category, brand, product
+                  link etc. For the demo purpose, we chose Refrigerator, Ladder,
+                  Standing Desk and Lawn Mower as our product examples and used
+                  the pre-category data from (<a
+                    href="https://cseweb.ucsd.edu//~jmcauley/datasets/amazon_v2/index.html"
+                    >amazon review by UCSD</a
+                  >) across the below product categories, respectively.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="container py-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 id="preprocessing">Data Preprocessing</h2>
+                <p>
+                  Our mission is to classify reviews into relevant themes in
+                  order to empower the end users with valuable insights. To
+                  achieve this, our data preprocessing entails the following
+                  steps:
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="container py-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 id="cleaning">Data Cleaning</h3>
+                <p>
+                  To ensure the accuracy and relevance of the data, we embarked
+                  on a meticulous data filtering process as listed below:
+                </p>
+                <ul>
+                  <li>
+                    <b>Metadata Filtering:</b> our approach places significant
+                    emphasis on category data and if needed, we leverage string
+                    filters on title as well to precisely identify the specific
+                    products under analysis.
+                  </li>
+                  <li>
+                    <b>Connecting Reviews and Metadata:</b> we then carefully
+                    linked the review data with the filtered data from previous
+                    step to isolate and focus solely on reviews that’s directly
+                    associated with the identified products.
+                  </li>
+                  <li>
+                    <b>Honoring Verified Reviews:</b> as an effort to reduce the
+                    impact from fake review and uphold the credibility of the
+                    review content, we choose to honor the Amazon’s “Verified
+                    Purchase” flag and focus exclusively on reviews classified
+                    as “Verified”.
+                  </li>
+                  <li>
+                    <b>Review Rating Selection:</b> As a proxy for sentiment, we
+                    retained reviews with ratings of 3 or below, recognizing
+                    their significance in offering valuable insights into
+                    diverse aspects of the product.
+                  </li>
+                  <li>
+                    <b>Review Length Consideration:</b> Longer reviews tend to
+                    provide more detailed and comprehensive information.
+                    Therefore, we kept only reviews with a length of 5 words or
+                    more to ensure the depth of insights from our analysis.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section class="container py-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 id="labeling">Data Labeling</h3>
+                <p>
+                  To ensure the most relevant insights of the product will be
+                  reflected from mainly vendors perspective, we choose the
+                  distinctive labels as “Quality”, “Design/Functionality”,
+                  “Delivery/Packaging” and “Other” to categorize our reviews
+                  data.
+                </p>
+                <p>
+                  We initially explored the possibility of using GPT to assist
+                  in the classification process. However, to ensure the
+                  integrity and utility of the labels, we ultimately fall back
+                  on the manual labeling process. The detailed labeling approach
+                  is explained as follows:
+                </p>
+                <ul>
+                  <li>
+                    <b>Quality:</b>
+                    <ul>
+                      <li>
+                        Look for keywords and phrases that directly address the
+                        product's build, materials, or overall performance on
+                        durability. These may include terms like “stopped
+                        working“, “broke”, “poorly made”, etc.
+                      </li>
+                      <li>
+                        Pay attention to specific aspects of the product
+                        criticized by customers, such as “flimsy plastic”,
+                        ”wheel fell off“, “bottom snapped”, etc.
+                      </li>
+                      <li>
+                        When no keywords, phrases are presented, identify the
+                        review showing the sentiments related to dissatisfaction
+                        with the quality of the overall or part of the product
+                        as well as overall quality control.
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <b>Design/Functionality:</b>
+                    <ul>
+                      <li>
+                        Look for keywords and phrases that point out the issues
+                        with product design or function. Examples include:
+                        “poorly designed”, “don’t like”, “runs into problem”.
+                      </li>
+                      <li>
+                        Identify reviews with phrases that address the product's
+                        specific design aesthetics or functional features. For
+                        examples: “heavy”, “bag hangs too low”, “doesn’t cut
+                        even”,
+                      </li>
+                      <li>
+                        Focus on sentiments related to how well the product can
+                        meet its intended purpose. e.g. the reviewer express
+                        explicitly their hope/expectation for the product to be
+                        made in certain ways.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <b>Delivery/Packaging:</b>
+                    <ul>
+                      <li>
+                        Look for keywords and phrases that explicitly point out
+                        issues related to the delivery or packaging of the
+                        product. For example: “packaging damage“, “box was
+                        open”, “non-original package”
+                      </li>
+                      <li>
+                        Locate the reviews with expressions that implies the
+                        product was not handled properly during delivery and
+                        packaging process and caused dissatisfaction. E.g.
+                        “arrived with scratch”, “missing parts”, “previously
+                        returned”,
+                      </li>
+                      <li>
+                        Consider sentiments related to any issues caused by the
+                        delivery or packaging process that happened before the
+                        product was put into use.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <b>Other:</b>
+                    <ul>
+                      <li>
+                        For reviews that do not fit into the above categories,
+                        assign them to the "other" category.
+                      </li>
+                      <li>
+                        This category may include feedback about customer
+                        service experiences, any additional features that are
+                        not covered by the primary themes such as incorrect
+                        installation instruction, or any general comments that
+                        are unclear on conveying the issue or do not pertain to
+                        specific aspects.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section class="container py-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 id="processing">Text Preprocessing</h3>
+                <p>
+                  As we harness the power of the BERT Model for review
+                  classification, our text preprocessing process leverages the
+                  BERTTokenizer to convert the data into tokenized format to
+                  ensure the seamless compatibility with BERT's input
+                  requirements. Please refer to our NLP model section for
+                  further details. When utilizing the BERTopic model for
+                  unsupervised topic clustering, we filter first by review class
+                  and product category before feeding the review into the
+                  BERTopic model. Each review was then further broken down and
+                  tokenized by each sentence before feeding all sentences into
+                  the model.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="container py-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 id="modeling">Modeling</h2>
+                <p>
+                  Our primary task revolved around text classification where we
+                  classified reviews into different categories such as Quality,
+                  Design/Functionality, etc as the customer's primary complaint
+                  or area of concern regarding their Amazon product review. We
+                  primarily explored three different models. We had compared a
+                  naives bayes classification model as our baseline and compared
+                  to LLM models such as BERT base uncase and BERT large uncase
+                  which we fine tuned. The fine tuning involves unfreezing the
+                  last layer of the BERT model and training the last layer on
+                  our labeled dataset.
+                </p>
+                <p>
+                  We wanted to focus our technique on using LLM models as usage
+                  of LLM models is the current state of art technique and
+                  currently relevant with the advent of LLM models such as
+                  GPT-4. We chose BERT over GPT as BERT from our research
+                  performs better for NLU tasks compared to GPT. BERT is
+                  bidirectional so it would look at the left and right context
+                  of a word to achieve better understanding compared to GPT
+                  which only considers the left context of a word. GPT is more
+                  suited to summarization and knowledge based tasks such as
+                  translation due to the large corpus that the latest GPT model
+                  is trained on.
+                </p>
+                <p>
+                  LLM models due to already being pre-trained on a large corpus
+                  of documents allows for better performance especially when the
+                  existing labeled dataset is small. Our dataset was inherently
+                  unlabeled so we had to manually review and generate a labeled
+                  dataset. We split the dataset primarily into a training,
+                  validation,and test dataset. We compared the different models
+                  based primarily on the F1-score. Both BERT models performed
+                  similarly with the Naive Bayes classification model being the
+                  worst of the three. We went with BERT base uncase since the
+                  performance was similar to BERT large uncase, but took less
+                  time to train. By separating the customer complaints into
+                  proper categories, we believe it would enable sellers to
+                  achieve better and more specific insights. We wish to enable
+                  them to hone in on primary areas of where to best focus their
+                  efforts to create a product capable of competing with existing
+                  products on the market.
+                </p>
+                <p>
+                  To achieve this goal of better enabling sellers to have useful
+                  insights, we had the additional subtask of topic modeling.
+                  After the reviews were classified, we fed this into a
+                  unsupervised topic model. We evaluated using LDA analysis as
+                  well as BERTopic. We also explored different representation
+                  models. We ultimately after manually reviewing results by eye
+                  chose to go with BERTopic model with the multi-modal approach
+                  of both KeyBERTInspired and MaximalRelevance as these had the
+                  most focused and relevant results. We hope to narrow areas of
+                  focus and reduce time of interpretation for the sellers
+                  through unsupervised topic clustering. The seller can within
+                  each review class quickly achieve an understanding of what
+                  areas of concern customers have issues with within each review
+                  class. One of the challenges we initially faced was having an
+                  inherently unlabeled dataset. We had to develop our own
+                  methodology to label the dataset as well as having to manually
+                  label the dataset. This resulted in having to work with a
+                  relatively small labeled dataset to train on. We also ran into
+                  issues with what categories to include. We used three primary
+                  categories of Design/Functionality, Quality,and Delivery/
+                  Packaging. These were from our investigation the largest areas
+                  that reviews fell into. Adding additional classes that were
+                  smaller and not as well defined introduced noise and decreased
+                  overall model performance across all classes. We largely
+                  focused on these areas and disregarded other categories as we
+                  have found the other potential classes to be relatively very
+                  small. The lack of additional classes is also not a concern as
+                  we are most focused on providing overall macro insights and
+                  additional small amounts of error would not affect the
+                  insights provided. The unsupervised topic modeling was also a
+                  challenge due to the large amount of subjectivity and
+                  interpretability required. Future works would include
+                  investigating the generalizability of the text classification
+                  among product categories that the model was not pre-trained
+                  on. Another task would be to further explore and refine adding
+                  a text generator model to create better interpretation of
+                  topic clustering.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

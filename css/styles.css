@@ -655,7 +655,7 @@ progress {
 }
 @media (min-width: 992px) {
   .container-lg, .container-md, .container-sm, .container {
-    max-width: 960px;
+    max-width: 1140px;
   }
 }
 @media (min-width: 1200px) {
@@ -10969,4 +10969,22 @@ section.resume-section .resume-section-content {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
+}
+
+.analytics-container {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+#navbarResponsive .nav-link {
+  text-align: left;
+  padding-left: 3rem;
+}
+
+.nav-link-sublinks {
+  text-align: left;
+  font-size: 14px;
+  padding-left: 1rem;
 }
